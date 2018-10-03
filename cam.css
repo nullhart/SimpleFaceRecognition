@@ -1,0 +1,65 @@
+.preloader-scan {
+    position: fixed;
+    left: 0;
+    right: 0;
+    max-width: 200px;
+    display: table;
+    margin: 0 auto;
+    height: 100%;
+    text-align: center;
+
+    @for $i from 1 through 24 {
+        li:nth-child(#{$i}) {
+            $w: random(5);
+            width: #{$w}px;
+        }
+    }
+
+    ul {
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    li {
+        display: inline-block;
+        width: 2px;
+        height: 50px;
+        background-color: #444;
+    }
+
+    .laser {
+        width: 150%;
+        margin-left: -25%;
+        background-color: tomato;
+        height: 1px;
+        position: absolute;
+        top: 40%;
+        z-index: 2;
+        box-shadow: 0 0 4px red;
+        animation: scanning 2s infinite;
+    }
+
+    .diode {
+        animation: beam .01s infinite;
+    }
+
+}
+
+body {
+    height: 100%;
+}
+
+@keyframes beam {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes scanning {
+    50% {
+        transform: translateY(75px);
+    }
+}
